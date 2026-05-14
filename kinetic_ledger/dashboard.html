@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kinetic Ledger | Member Management Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#690005",
+                        "surface-container-high": "#222a3d",
+                        "on-tertiary-fixed": "#001f26",
+                        "inverse-primary": "#494bd6",
+                        "tertiary-fixed-dim": "#4cd7f6",
+                        "secondary-fixed": "#e9ddff",
+                        "on-primary-fixed": "#07006c",
+                        "error-container": "#93000a",
+                        "surface-dim": "#0b1326",
+                        "surface-container-lowest": "#060e20",
+                        "on-surface-variant": "#c7c4d7",
+                        "on-secondary-fixed": "#23005c",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-secondary-fixed-variant": "#5516be",
+                        "surface-variant": "#2d3449",
+                        "surface-container-low": "#131b2e",
+                        "on-primary": "#1000a9",
+                        "inverse-surface": "#dae2fd",
+                        "surface-container": "#171f33",
+                        "primary-container": "#8083ff",
+                        "secondary": "#d0bcff",
+                        "error": "#ffb4ab",
+                        "primary": "#c0c1ff",
+                        "surface-bright": "#31394d",
+                        "tertiary-container": "#009eb9",
+                        "on-primary-container": "#0d0096",
+                        "on-surface": "#dae2fd",
+                        "secondary-container": "#571bc1",
+                        "surface-container-highest": "#2d3449",
+                        "on-tertiary": "#003640",
+                        "primary-fixed": "#e1e0ff",
+                        "secondary-fixed-dim": "#d0bcff",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "surface": "#0b1326",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-background": "#dae2fd",
+                        "inverse-on-surface": "#283044",
+                        "outline": "#908fa0",
+                        "on-secondary-container": "#c4abff",
+                        "on-secondary": "#3c0091",
+                        "on-tertiary-container": "#002f38",
+                        "background": "#0b1326",
+                        "tertiary-fixed": "#acedff",
+                        "tertiary": "#4cd7f6",
+                        "outline-variant": "#464554",
+                        "surface-tint": "#c0c1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-xs": "4px",
+                        "stack-md": "16px",
+                        "container-max": "1440px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "8px",
+                        "stack-xl": "48px",
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "stack-lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(23, 31, 51, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(70, 69, 84, 0.3);
+        }
+        .gradient-button {
+            background: linear-gradient(135deg, #c0c1ff 0%, #d0bcff 100%);
+            color: #07006c;
+        }
+        .chart-grid {
+            background-image: linear-gradient(to right, rgba(144, 143, 160, 0.1) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(144, 143, 160, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-screen w-60 z-50 bg-surface-container-low/80 backdrop-blur-xl border-r border-outline-variant/20 flex flex-col py-stack-lg px-stack-md space-y-stack-sm">
+<div class="mb-stack-xl px-2">
+<h1 class="text-headline-md font-headline-md font-bold tracking-tight text-primary">Kinetic Ledger</h1>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Regional Management</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg font-bold border-l-2 border-primary" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant/50 transition-all duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-body-md">Members</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant/50 transition-all duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="public">public</span>
+<span class="text-body-md">Regions</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant/50 transition-all duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="text-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant/50 transition-all duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-body-md">Settings</span>
+</a>
+</nav>
+<div class="pt-stack-lg space-y-2 border-t border-outline-variant/10">
+<button class="w-full flex items-center justify-center gap-2 py-2 gradient-button rounded-lg font-bold text-label-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                AI Insights
+            </button>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="help_center">help_center</span>
+<span class="text-body-md">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="text-body-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 right-0 left-60 h-16 z-40 bg-surface/60 backdrop-blur-md border-b border-outline-variant/20 flex items-center justify-between px-gutter">
+<div class="flex items-center gap-gutter flex-1">
+<h2 class="text-headline-md font-headline-md font-bold text-on-surface">Member Management</h2>
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-1.5 pl-10 pr-4 text-body-md focus:ring-2 focus:ring-primary/50 placeholder:text-outline-variant transition-all" placeholder="Search members or regions..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high/40 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high/40 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high/40 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+</button>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/30 mx-2"></div>
+<button class="px-4 py-1.5 gradient-button rounded-lg text-label-sm font-bold">New Entry</button>
+<img alt="User profile" class="h-8 w-8 rounded-full border border-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa4_az-DnghqIcrZV9SJKAISulHtvXMO2ptgYj1_c4wf2WfHsZUrBNRzl-sJ75cvXz0FsOE3gMscmxF_F7zCNmfynfNUsFRuHgoeN9Pf9mxRwOYDlr4KSH1Bkvc6BJzHd4nCuDS1TWDF7l7om5c0IFL5LX9LaWr2lANRKligf9ei_uwU3X1ihhmUueSkHsY04t9X4RK6NgYDaev2VmO1I8cWMw70wuds6qt1IOPF0dYbXM3vEwxT55NJIQddFPlxWwlcKFqpfJWT8"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-60 pt-16 min-h-screen p-gutter bg-surface-container-lowest">
+<!-- KPI Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-gutter mb-stack-lg">
+<div class="glass-card rounded-xl p-stack-md flex flex-col justify-between group hover:border-primary/50 transition-colors">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">Total Members</p>
+<h3 class="text-headline-xl font-headline-xl mt-1">12,482</h3>
+</div>
+<div class="p-2 rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2 text-label-md text-tertiary">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+<span>+12% from last month</span>
+</div>
+</div>
+<div class="glass-card rounded-xl p-stack-md flex flex-col justify-between group hover:border-primary/50 transition-colors">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">Active Regions</p>
+<h3 class="text-headline-xl font-headline-xl mt-1">48</h3>
+</div>
+<div class="p-2 rounded-lg bg-secondary-container/20 text-secondary">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2 text-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span>Global Coverage</span>
+</div>
+</div>
+<div class="glass-card rounded-xl p-stack-md flex flex-col justify-between group hover:border-primary/50 transition-colors">
+<div class="flex items-start justify-between">
+<div>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider">Monthly Growth</p>
+<h3 class="text-headline-xl font-headline-xl mt-1">842</h3>
+</div>
+<div class="p-2 rounded-lg bg-tertiary-container/20 text-tertiary">
+<span class="material-symbols-outlined" data-icon="auto_graph">auto_graph</span>
+</div>
+</div>
+<div class="mt-4 flex items-center gap-2 text-label-md text-tertiary">
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_upward">arrow_upward</span>
+<span>8.4% Net Increase</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<button class="flex-1 gradient-button rounded-xl flex items-center justify-between px-stack-lg font-bold group relative overflow-hidden">
+<span class="text-headline-md relative z-10">Add Member</span>
+<span class="material-symbols-outlined text-headline-xl relative z-10 transition-transform group-hover:translate-x-1" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="flex-1 bg-surface-container-high border border-outline-variant/30 rounded-xl flex items-center justify-between px-stack-lg font-bold text-on-surface hover:bg-surface-container-highest transition-colors">
+<span class="text-headline-md">Broadcast</span>
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+</button>
+</div>
+</div>
+<!-- Bento Layout -->
+<div class="grid grid-cols-12 gap-gutter items-start">
+<!-- Regional Performance Chart Area -->
+<div class="col-span-12 lg:col-span-8 glass-card rounded-xl p-stack-lg relative overflow-hidden">
+<div class="flex items-center justify-between mb-stack-lg relative z-10">
+<div>
+<h4 class="text-headline-lg font-headline-lg">Regional Performance</h4>
+<p class="text-body-md text-on-surface-variant">Active transaction ledger across top 5 territories</p>
+</div>
+<div class="flex bg-surface-container-low rounded-lg p-1 border border-outline-variant/20">
+<button class="px-3 py-1 bg-primary text-on-primary rounded-md text-label-sm font-bold">7D</button>
+<button class="px-3 py-1 text-on-surface-variant hover:text-on-surface text-label-sm">30D</button>
+<button class="px-3 py-1 text-on-surface-variant hover:text-on-surface text-label-sm">1Y</button>
+</div>
+</div>
+<div class="h-[400px] w-full chart-grid relative rounded-lg border border-outline-variant/10 overflow-hidden">
+<!-- SVG Chart Mockup -->
+<svg class="absolute inset-0 w-full h-full" viewbox="0 0 800 400">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#c0c1ff" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#c0c1ff" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,320 Q100,280 200,300 T400,180 T600,220 T800,100 L800,400 L0,400 Z" fill="url(#chartGradient)"></path>
+<path d="M0,320 Q100,280 200,300 T400,180 T600,220 T800,100" fill="none" stroke="#c0c1ff" stroke-linecap="round" stroke-width="3"></path>
+<circle class="filter drop-shadow-[0_0_8px_rgba(192,193,255,0.8)]" cx="400" cy="180" fill="#c0c1ff" r="5"></circle>
+</svg>
+<!-- Floating Data Tooltip -->
+<div class="absolute left-[380px] top-[100px] bg-surface-container-high border border-primary/50 p-2 rounded-lg shadow-xl text-label-sm">
+<p class="text-primary font-bold">North Region</p>
+<p class="text-on-surface">4,281 Active</p>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-4 mt-stack-lg">
+<div class="flex flex-col gap-1 border-r border-outline-variant/20">
+<span class="text-label-sm text-on-surface-variant uppercase">Western</span>
+<span class="text-headline-md">2,105</span>
+</div>
+<div class="flex flex-col gap-1 border-r border-outline-variant/20">
+<span class="text-label-sm text-on-surface-variant uppercase">Northern</span>
+<span class="text-headline-md">4,281</span>
+</div>
+<div class="flex flex-col gap-1 border-r border-outline-variant/20">
+<span class="text-label-sm text-on-surface-variant uppercase">Southern</span>
+<span class="text-headline-md">1,940</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-label-sm text-on-surface-variant uppercase">Eastern</span>
+<span class="text-headline-md">3,156</span>
+</div>
+</div>
+</div>
+<!-- Recent Activity Sidebar -->
+<div class="col-span-12 lg:col-span-4 space-y-gutter">
+<div class="glass-card rounded-xl p-stack-lg h-full">
+<div class="flex items-center justify-between mb-stack-lg">
+<h4 class="text-headline-md font-headline-md">Recent Activity</h4>
+<button class="text-primary text-label-sm font-bold hover:underline">View All</button>
+</div>
+<div class="space-y-6 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-outline-variant/30">
+<!-- Activity Item 1 -->
+<div class="relative pl-8 group">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-surface-container-highest border-2 border-primary flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px] text-primary" style="font-variation-settings: 'FILL' 1;">circle</span>
+</div>
+<div class="bg-surface-variant/20 p-3 rounded-lg border border-outline-variant/10 group-hover:border-primary/30 transition-colors">
+<p class="text-body-md font-bold">New Member Onboarded</p>
+<p class="text-body-sm text-on-surface-variant mb-2">Marcus Chen joined the Pacific Northwest region.</p>
+<div class="flex items-center gap-2">
+<span class="text-label-sm text-primary-fixed-dim bg-primary/20 px-2 py-0.5 rounded">Pacific NW</span>
+<span class="text-label-sm text-on-surface-variant">2 mins ago</span>
+</div>
+</div>
+</div>
+<!-- Activity Item 2 -->
+<div class="relative pl-8 group">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-surface-container-highest border-2 border-secondary flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px] text-secondary" style="font-variation-settings: 'FILL' 1;">circle</span>
+</div>
+<div class="bg-surface-variant/20 p-3 rounded-lg border border-outline-variant/10 group-hover:border-secondary/30 transition-colors">
+<p class="text-body-md font-bold">Region Status Update</p>
+<p class="text-body-sm text-on-surface-variant mb-2">Central Europe reached Tier 2 engagement level.</p>
+<div class="flex items-center gap-2">
+<span class="text-label-sm text-secondary-fixed-dim bg-secondary/20 px-2 py-0.5 rounded">Europe</span>
+<span class="text-label-sm text-on-surface-variant">45 mins ago</span>
+</div>
+</div>
+</div>
+<!-- Activity Item 3 -->
+<div class="relative pl-8 group">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-surface-container-highest border-2 border-tertiary flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px] text-tertiary" style="font-variation-settings: 'FILL' 1;">circle</span>
+</div>
+<div class="bg-surface-variant/20 p-3 rounded-lg border border-outline-variant/10 group-hover:border-tertiary/30 transition-colors">
+<p class="text-body-md font-bold">System Broadcast Sent</p>
+<p class="text-body-sm text-on-surface-variant mb-2">Q4 Performance goals distributed to all regional leads.</p>
+<div class="flex items-center gap-2">
+<span class="text-label-sm text-on-surface-variant">2 hours ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Metric Card -->
+<div class="glass-card rounded-xl p-stack-lg border-l-4 border-tertiary">
+<h5 class="text-label-md font-label-md text-tertiary mb-1">AI PROJECTION</h5>
+<p class="text-headline-md leading-tight">Projecting <span class="text-tertiary font-bold">14,200</span> total members by end of Q4.</p>
+<div class="mt-4 h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full w-[88%]"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- AI Assistant Widget -->
+<div class="fixed bottom-gutter right-gutter z-50">
+<div class="flex items-center gap-3">
+<div class="bg-surface-container-high border border-outline-variant/30 rounded-2xl py-3 px-5 shadow-2xl flex items-center gap-4 group hover:border-primary/50 transition-all cursor-pointer">
+<div class="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center relative">
+<span class="material-symbols-outlined text-primary" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="absolute -top-1 -right-1 h-3 w-3 bg-tertiary rounded-full ring-2 ring-surface-container-high"></span>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant uppercase">Ledger AI</p>
+<p class="text-body-md font-bold text-on-surface">Region 'West-2' is seeing abnormal churn.</p>
+</div>
+<div class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="close">close</div>
+</div>
+</div>
+</div>
+</body></html>

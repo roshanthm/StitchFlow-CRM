@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#690005",
+                    "surface-container-high": "#222a3d",
+                    "on-tertiary-fixed": "#001f26",
+                    "inverse-primary": "#494bd6",
+                    "tertiary-fixed-dim": "#4cd7f6",
+                    "secondary-fixed": "#e9ddff",
+                    "on-primary-fixed": "#07006c",
+                    "error-container": "#93000a",
+                    "surface-dim": "#0b1326",
+                    "surface-container-lowest": "#060e20",
+                    "on-surface-variant": "#c7c4d7",
+                    "on-secondary-fixed": "#23005c",
+                    "on-tertiary-fixed-variant": "#004e5c",
+                    "on-secondary-fixed-variant": "#5516be",
+                    "surface-variant": "#2d3449",
+                    "surface-container-low": "#131b2e",
+                    "on-primary": "#1000a9",
+                    "inverse-surface": "#dae2fd",
+                    "surface-container": "#171f33",
+                    "primary-container": "#8083ff",
+                    "secondary": "#d0bcff",
+                    "error": "#ffb4ab",
+                    "primary": "#c0c1ff",
+                    "surface-bright": "#31394d",
+                    "tertiary-container": "#009eb9",
+                    "on-primary-container": "#0d0096",
+                    "on-surface": "#dae2fd",
+                    "secondary-container": "#571bc1",
+                    "surface-container-highest": "#2d3449",
+                    "on-tertiary": "#003640",
+                    "primary-fixed": "#e1e0ff",
+                    "secondary-fixed-dim": "#d0bcff",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "surface": "#0b1326",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "on-background": "#dae2fd",
+                    "inverse-on-surface": "#283044",
+                    "outline": "#908fa0",
+                    "on-secondary-container": "#c4abff",
+                    "on-secondary": "#3c0091",
+                    "on-tertiary-container": "#002f38",
+                    "background": "#0b1326",
+                    "tertiary-fixed": "#acedff",
+                    "tertiary": "#4cd7f6",
+                    "outline-variant": "#464554",
+                    "surface-tint": "#c0c1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-xs": "4px",
+                    "stack-md": "16px",
+                    "container-max": "1440px",
+                    "margin-mobile": "16px",
+                    "stack-sm": "8px",
+                    "stack-xl": "48px",
+                    "gutter": "24px",
+                    "margin-desktop": "40px",
+                    "stack-lg": "24px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-md": ["Inter"],
+                    "headline-xl": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-sidebar {
+            background: linear-gradient(135deg, rgba(19, 27, 46, 0.8) 0%, rgba(11, 19, 38, 0.8) 100%);
+            backdrop-filter: blur(20px) saturate(180%);
+        }
+        .gradient-button {
+            background: linear-gradient(to bottom, #8083ff, #571bc1);
+            box-shadow: 0 4px 12px rgba(87, 27, 193, 0.3);
+        }
+        .gradient-button:hover {
+            background: linear-gradient(to bottom, #c0c1ff, #8083ff);
+        }
+        .inset-focus:focus {
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3), 0 0 0 2px #c0c1ff;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex font-body-md overflow-hidden">
+<!-- Left Side: Visual/Brand Section -->
+<section class="hidden lg:flex lg:w-1/2 relative overflow-hidden bg-surface-container-lowest">
+<!-- Abstract Graphic Background -->
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-60" data-alt="A sophisticated abstract digital art composition featuring flowing, layered glass-like waves in shades of deep indigo, violet, and electric cyan. The lighting is dramatic and moody with soft glows emanating from the intersections of the geometric curves, creating a high-fidelity tech aesthetic. The overall atmosphere is professional, authoritative, and futuristic, perfectly matching a premium corporate SaaS identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZyzMer8Y0vJuy73kRwG4943nYKJb1cGOw7vJ3BuOGu1KzTE1ciwWxJ3ptId9eP_BV19UsZ13WJa3xyG3wDXF-zNha73n7jlpLEjWjoerJMgNHXPLQq4A2DaVhmDkC-K7oixHdwmb6x6V10ZZ6kn7mkw8vD1ZG1qCJSeGk_9LtXbN_iHd0rBk2DvTH0QsZjdkSm4B2yZvxt5mAQ5RtlsoDZ8nL7BsFbUQcTrXE4DIAovM-EZqvu_Aw1Dij70_U4r1M2bNTNqsBfgU"/>
+<div class="absolute inset-0 bg-gradient-to-tr from-surface-container-lowest via-transparent to-primary/10"></div>
+</div>
+<!-- Content Overlay -->
+<div class="relative z-10 flex flex-col justify-between p-stack-xl w-full">
+<div class="flex items-center gap-stack-sm">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<span class="text-headline-md font-headline-md font-bold tracking-tight text-primary">Kinetic Ledger</span>
+</div>
+<div class="max-w-md">
+<h1 class="text-headline-xl font-headline-xl text-on-surface mb-stack-md leading-tight">
+                    Manage your region with confidence.
+                </h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant">
+                    Experience the next generation of member management with our high-density data architecture and regional insights platform.
+                </p>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="Close-up portrait of a professional female executive with a confident expression, soft studio lighting, high-end corporate photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYeD1mam7eEhsjZqpHNUhRLJaD1gbGY8A7smcNVLzhDUXtCFX5saAu9fBKSN_DhhputGLtQNhS6Ykh5UvdTDfHibC6TKgQneWaO563F8kxpClZzyKM1bZxFHKbauiTOPZCMOwWy2HR11d32TaqQGTtuMwLYffraSjp34lK-VJz-QicWS0BCwoiG4OGtC3slTPigS8qSwbZdt_QnnBFutB11Tg0v3neYZkr-TSMIMPwtyb-NY3emoqy_p6Ycbo0imjqJZi0v0AqNjs"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="Professional male manager headshot, neutral background, sharp focus, sophisticated business aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8SYoCD1KmVODvJ3K15KHVvLQkd5cRZVnQvxOGCDbo1ageW_VGbR6DmCPGmqE4MbgPfU7SkzEh2h9DjqqlJqhp4DhzXeHP_IS5qThZBaWt7zklVJRqjiu2LYvvDEM3r0Gv9444oWjiLrsq-QjQ1IipxfbS3tjQYOy3DO2Kf46wZp5NFvf43kfzNj-5toMhJUvfoIMbPMOwyQKlFHsDf-70vSGFTF6xe-GX92ib81gCusdKhu4hKCSfI9-3WmWngZvY5UlPPYSf0rE"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="Diverse professional woman smiling, vibrant corporate portrait, clean lighting, high fidelity skin textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjveDSBfRjfIcBWAtTVCPReb4n_HJBlnU4opRjH6v7JjSYwsuwsPM-2b_MiQQTY2Y0tOeY82KIEukthkBrZMsHzHYcasaoofUDYpiFcsYfSXWBN-_0Eu5UwsKrPsjfb589t6qUArFiJpLY7YHuaJjIqOHwSKpNokRUMeTrjq5hgqgLEgXp4ygqMNWaSRGEm3n2sV9Kz1uOAko64xzfx3B862otUnQxZbx22uzUSdg9ulH4VbCJkKJEzVIWQkhOCakUVBzKvOO-1xo"/>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Trusted by 2,000+ regional leads</span>
+</div>
+</div>
+</section>
+<!-- Right Side: Authentication Form -->
+<section class="w-full lg:w-1/2 flex items-center justify-center p-stack-lg bg-surface relative">
+<div class="w-full max-w-sm space-y-stack-xl">
+<!-- Mobile Header Only -->
+<div class="lg:hidden flex flex-col items-center mb-stack-xl">
+<div class="w-12 h-12 bg-primary-container rounded-xl flex items-center justify-center mb-stack-sm">
+<span class="material-symbols-outlined text-on-primary-container text-3xl" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface">Kinetic Ledger</h2>
+</div>
+<div class="space-y-stack-sm text-center lg:text-left">
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Welcome back</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Please enter your details to sign in.</p>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-2 gap-stack-sm">
+<button class="flex items-center justify-center gap-stack-sm py-stack-sm px-stack-md border border-outline-variant hover:bg-surface-container-high transition-all rounded-lg text-on-surface font-medium">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+                    Google
+                </button>
+<button class="flex items-center justify-center gap-stack-sm py-stack-sm px-stack-md border border-outline-variant hover:bg-surface-container-high transition-all rounded-lg text-on-surface font-medium">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+</svg>
+                    GitHub
+                </button>
+</div>
+<div class="relative flex items-center">
+<div class="flex-grow border-t border-outline-variant"></div>
+<span class="flex-shrink mx-4 text-label-sm font-label-sm text-outline uppercase tracking-widest">or continue with email</span>
+<div class="flex-grow border-t border-outline-variant"></div>
+</div>
+<!-- Login Form -->
+<form class="space-y-stack-md">
+<div class="space-y-stack-xs">
+<label class="text-label-sm font-label-sm text-on-surface-variant ml-1" for="email">Work Email</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-lg">mail</span>
+</div>
+<input class="block w-full pl-10 pr-stack-md py-3 bg-surface-container-low border border-outline-variant rounded-lg text-on-surface text-body-md inset-focus outline-none transition-all placeholder:text-outline/50" id="email" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<div class="space-y-stack-xs">
+<div class="flex justify-between items-center">
+<label class="text-label-sm font-label-sm text-on-surface-variant ml-1" for="password">Password</label>
+<a class="text-label-sm font-label-sm text-primary hover:underline" href="#">Forgot password?</a>
+</div>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-lg">lock</span>
+</div>
+<input class="block w-full pl-10 pr-stack-md py-3 bg-surface-container-low border border-outline-variant rounded-lg text-on-surface text-body-md inset-focus outline-none transition-all placeholder:text-outline/50" id="password" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<div class="flex items-center space-x-2 py-1">
+<input class="w-4 h-4 rounded border-outline-variant bg-surface-container-low text-primary focus:ring-primary focus:ring-offset-surface" id="remember" type="checkbox"/>
+<label class="text-body-md font-body-md text-on-surface-variant" for="remember">Remember for 30 days</label>
+</div>
+<button class="w-full py-3 px-stack-md gradient-button text-on-primary font-bold rounded-lg transition-transform active:scale-[0.98]" type="submit">
+                    Sign In
+                </button>
+</form>
+<div class="text-center">
+<p class="text-body-md font-body-md text-on-surface-variant">
+                    Don't have an account? 
+                    <a class="text-primary font-bold hover:underline ml-1" href="#">Create an account</a>
+</p>
+</div>
+<!-- Footer links -->
+<div class="pt-stack-xl flex justify-center gap-stack-lg border-t border-outline-variant/30">
+<a class="text-label-sm font-label-sm text-outline hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+<a class="text-label-sm font-label-sm text-outline hover:text-on-surface transition-colors" href="#">Terms of Service</a>
+<a class="text-label-sm font-label-sm text-outline hover:text-on-surface transition-colors" href="#">System Status</a>
+</div>
+</div>
+</section>
+</body></html>

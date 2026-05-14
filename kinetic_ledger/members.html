@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#690005",
+            "surface-container-high": "#222a3d",
+            "on-tertiary-fixed": "#001f26",
+            "inverse-primary": "#494bd6",
+            "tertiary-fixed-dim": "#4cd7f6",
+            "secondary-fixed": "#e9ddff",
+            "on-primary-fixed": "#07006c",
+            "error-container": "#93000a",
+            "surface-dim": "#0b1326",
+            "surface-container-lowest": "#060e20",
+            "on-surface-variant": "#c7c4d7",
+            "on-secondary-fixed": "#23005c",
+            "on-tertiary-fixed-variant": "#004e5c",
+            "on-secondary-fixed-variant": "#5516be",
+            "surface-variant": "#2d3449",
+            "surface-container-low": "#131b2e",
+            "on-primary": "#1000a9",
+            "inverse-surface": "#dae2fd",
+            "surface-container": "#171f33",
+            "primary-container": "#8083ff",
+            "secondary": "#d0bcff",
+            "error": "#ffb4ab",
+            "primary": "#c0c1ff",
+            "surface-bright": "#31394d",
+            "tertiary-container": "#009eb9",
+            "on-primary-container": "#0d0096",
+            "on-surface": "#dae2fd",
+            "secondary-container": "#571bc1",
+            "surface-container-highest": "#2d3449",
+            "on-tertiary": "#003640",
+            "primary-fixed": "#e1e0ff",
+            "secondary-fixed-dim": "#d0bcff",
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#2f2ebe",
+            "surface": "#0b1326",
+            "primary-fixed-dim": "#c0c1ff",
+            "on-background": "#dae2fd",
+            "inverse-on-surface": "#283044",
+            "outline": "#908fa0",
+            "on-secondary-container": "#c4abff",
+            "on-secondary": "#3c0091",
+            "on-tertiary-container": "#002f38",
+            "background": "#0b1326",
+            "tertiary-fixed": "#acedff",
+            "tertiary": "#4cd7f6",
+            "outline-variant": "#464554",
+            "surface-tint": "#c0c1ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "stack-xs": "4px",
+            "stack-md": "16px",
+            "container-max": "1440px",
+            "margin-mobile": "16px",
+            "stack-sm": "8px",
+            "stack-xl": "48px",
+            "gutter": "24px",
+            "margin-desktop": "40px",
+            "stack-lg": "24px"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "label-md": ["JetBrains Mono"],
+            "headline-md": ["Inter"],
+            "headline-xl": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-lg-mobile": ["Inter"]
+          },
+          "fontSize": {
+            "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+            "headline-md": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+            "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+            "headline-lg-mobile": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary/30">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-60 z-50 bg-surface-container-low/80 backdrop-blur-xl border-r border-outline-variant/20 flex flex-col py-stack-lg px-stack-md space-y-stack-sm">
+<div class="mb-stack-xl px-2">
+<div class="text-headline-md font-headline-md font-bold tracking-tight text-primary">Kinetic Ledger</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest mt-1">Regional Management</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg font-bold border-l-2 border-primary group" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span class="font-body-md">Members</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-[20px]">public</span>
+<span class="font-body-md">Regions</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-[20px]">insights</span>
+<span class="font-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant/50 transition-all duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="pt-stack-lg border-t border-outline-variant/10 space-y-1">
+<button class="w-full flex items-center justify-center gap-2 py-2.5 mb-4 bg-gradient-to-b from-primary-container to-primary text-on-primary-container font-bold rounded-lg shadow-sm active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+<span>AI Insights</span>
+</button>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]">help_center</span>
+<span class="font-body-md">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-on-surface transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span class="font-body-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="ml-60 min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-60 h-16 z-40 bg-surface/60 backdrop-blur-md border-b border-outline-variant/20 flex items-center justify-between px-gutter">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant/30 rounded-full py-1.5 pl-10 pr-4 text-body-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all group-focus-within:bg-surface-container-high shadow-inner" placeholder="Search members, regions, or IDs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="flex items-center gap-1">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high/40 rounded-full transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high/40 rounded-full transition-all">
+<span class="material-symbols-outlined">history</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high/40 rounded-full transition-all">
+<span class="material-symbols-outlined">chat</span>
+</button>
+</div>
+<div class="h-6 w-px bg-outline-variant/20"></div>
+<button class="text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface transition-colors">Support</button>
+<button class="bg-primary text-on-primary-container px-4 py-1.5 rounded-lg font-bold text-label-sm hover:saturate-150 transition-all">New Entry</button>
+<img alt="User profile" class="w-8 h-8 rounded-full border border-outline-variant/50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxOmjLVTbQSWaUofRL95YmYvEFf4kRaf5NzE_uEB_YOSX3csLb4MdVbaveKX48Z8GlCceIq045TZel15x3_jVMmOUDt4Bbrll1eldxVHDLbtAw-KaK3PQJrMWkd7hXFFLpFmjF4A80lF1Of9w-6BYKII-rD7gxkrwGq19zwrq03n6cHVfB1tkLzTnJ4b5g-4qyHH4NAQAdikehFVPFEFEUUHkt9pwgosTUNmDRX2e-j50b30UkH4PDSl6ain5rgsHn8CwrNreqeWA"/>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="mt-16 p-stack-lg flex-1">
+<div class="max-w-container-max mx-auto space-y-stack-lg">
+<!-- Header & View Toggles -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-stack-md">
+<div class="space-y-1">
+<h1 class="text-headline-xl font-headline-xl text-on-surface tracking-tight">Member Management</h1>
+<p class="text-body-lg text-on-surface-variant">Oversee global member status and regional distributions.</p>
+</div>
+<div class="bg-surface-container-low p-1 rounded-lg border border-outline-variant/20 flex gap-1">
+<button class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-highest text-primary rounded-md shadow-sm">
+<span class="material-symbols-outlined text-[18px]">table_rows</span>
+<span class="text-label-sm">Table</span>
+</button>
+<button class="flex items-center gap-2 px-3 py-1.5 text-on-surface-variant hover:bg-surface-container-high/40 rounded-md transition-all">
+<span class="material-symbols-outlined text-[18px]">grid_view</span>
+<span class="text-label-sm">Cards</span>
+</button>
+</div>
+</div>
+<!-- Filter Chips Bar -->
+<div class="flex flex-wrap items-center gap-stack-sm no-scrollbar overflow-x-auto pb-2">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-high/50 border border-outline-variant/30 rounded-full text-label-sm text-on-surface">
+<span class="text-on-surface-variant">Region:</span>
+<span class="font-bold">All Regions</span>
+<span class="material-symbols-outlined text-[14px]">expand_more</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-high/50 border border-outline-variant/30 rounded-full text-label-sm text-on-surface">
+<span class="text-on-surface-variant">Status:</span>
+<span class="font-bold">Active</span>
+<span class="material-symbols-outlined text-[14px]">expand_more</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-high/50 border border-outline-variant/30 rounded-full text-label-sm text-on-surface">
+<span class="text-on-surface-variant">Role:</span>
+<span class="font-bold">Lead</span>
+<span class="material-symbols-outlined text-[14px]">expand_more</span>
+</div>
+<div class="h-4 w-px bg-outline-variant/30 mx-1"></div>
+<button class="text-label-sm text-primary font-bold hover:underline">Clear Filters</button>
+</div>
+<!-- Bento Grid Stats Section -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="md:col-span-1 bg-surface-container-low border border-outline-variant/20 rounded-xl p-stack-md space-y-2">
+<div class="flex items-center justify-between">
+<span class="text-label-sm text-on-surface-variant uppercase">Total Members</span>
+<span class="material-symbols-outlined text-primary">groups</span>
+</div>
+<div class="text-headline-lg font-headline-lg">12,482</div>
+<div class="text-label-sm text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+              +12% from last month
+            </div>
+</div>
+<div class="md:col-span-1 bg-surface-container-low border border-outline-variant/20 rounded-xl p-stack-md space-y-2">
+<div class="flex items-center justify-between">
+<span class="text-label-sm text-on-surface-variant uppercase">Active Now</span>
+<span class="material-symbols-outlined text-tertiary">bolt</span>
+</div>
+<div class="text-headline-lg font-headline-lg">856</div>
+<div class="text-label-sm text-on-surface-variant">Real-time telemetry</div>
+</div>
+<div class="md:col-span-2 bg-gradient-to-br from-surface-container-low to-surface-container-high border border-outline-variant/20 rounded-xl p-stack-md flex justify-between items-center overflow-hidden relative">
+<div class="space-y-2 z-10">
+<span class="text-label-sm text-on-surface-variant uppercase">Primary Growth Region</span>
+<div class="text-headline-lg font-headline-lg">North America West</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-primary/20 text-primary text-[10px] rounded font-bold">TOP PERFORMANCE</span>
+<span class="px-2 py-0.5 bg-tertiary/20 text-tertiary text-[10px] rounded font-bold">STRATEGIC</span>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]">public</span>
+</div>
+</div>
+</div>
+<!-- Premium Data Table Card -->
+<div class="bg-surface-container-low border border-outline-variant/20 rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container/50 border-b border-outline-variant/10">
+<th class="px-gutter py-4 text-label-sm text-on-surface-variant uppercase tracking-wider font-bold">Name</th>
+<th class="px-gutter py-4 text-label-sm text-on-surface-variant uppercase tracking-wider font-bold">Region</th>
+<th class="px-gutter py-4 text-label-sm text-on-surface-variant uppercase tracking-wider font-bold">Status</th>
+<th class="px-gutter py-4 text-label-sm text-on-surface-variant uppercase tracking-wider font-bold">Joined Date</th>
+<th class="px-gutter py-4 text-label-sm text-on-surface-variant uppercase tracking-wider font-bold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-high/30 transition-colors group">
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-secondary-container to-primary overflow-hidden border border-outline-variant/30">
+<img alt="Member Avatar" class="w-full h-full object-cover" data-alt="A professional high-fidelity 3D avatar headshot of a person with stylish glasses, set against a vibrant abstract background of violet and blue gradients. The lighting is soft and studio-quality, conveying a sense of professional modern identity in a tech-focused corporate environment. The aesthetic is clean and minimalist." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8ejktjKr_0CfMAP6xMhz06P5DptOWtOkdgaDhAo4Zs8zYZCgqbeDOcxW2l8ElSMO7dwVec7g-59QqT6iuHZV1q25hcC3OUrEb9v-0Se4YcF1zU6uPhNr58-J4D-rjx7LxQU2mIMiFAv5Y6YChjJfB2qqh_EnSRc-He1p4RVTL7-1pRN8oBOCx2EmjT35S1KrV9sB0XG61GWxqbSXpMGJVO9nRCbfxa8mSRuAx_jj13BvZp02LUdUT3yf5d6e0kExXx_dI4SVYvW8"/>
+</div>
+<div>
+<div class="text-body-md font-bold text-on-surface">Alex Durand</div>
+<div class="text-label-sm text-on-surface-variant">alex.d@kinetic.io</div>
+</div>
+</div>
+</td>
+<td class="px-gutter py-4">
+<span class="font-label-md text-label-md bg-surface-variant/50 px-2 py-1 rounded text-primary">EU_CENTRAL_01</span>
+</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_rgba(76,215,246,0.6)]"></div>
+<span class="text-body-md text-on-surface">Active</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-body-md text-on-surface-variant">Oct 12, 2023</td>
+<td class="px-gutter py-4 text-right">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-high/30 transition-colors group">
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary-container to-secondary overflow-hidden border border-outline-variant/30">
+<img alt="Member Avatar" class="w-full h-full object-cover" data-alt="A premium 3D rendered avatar of a woman with short hair, wearing a sleek black turtleneck. The background is a soft, blurred office interior with indigo accent lighting. The overall style is modern corporate, mimicking the high-fidelity design language of a top-tier SaaS product like Linear or Stripe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-z98JQweTVe9409CRitr7XzGcXQNFdan9zPMOGbR2niYs-kz0pAU-zbdI-bFYly7d9Pcm7fH_ANqNLMLlLHPJBrTmO_Z6-3SifMDxcVX6NJYNzkRN9ZUX8ZHWRiTQSEqxSYeBU2MhFrCQW1zQhSAQ_NPcpEjTmCsw4GF1IVWstGiAykPR5h1IRftEMgZ9yjay-8eaS9a_QoBSxvTItVre2IXd0V4qPouOd_wl_Vjg8kdSADgt_SQRA49NzKwom_m2RZt1f1Q2Res"/>
+</div>
+<div>
+<div class="text-body-md font-bold text-on-surface">Sarah Kincaid</div>
+<div class="text-label-sm text-on-surface-variant">sarah.k@kinetic.io</div>
+</div>
+</div>
+</td>
+<td class="px-gutter py-4">
+<span class="font-label-md text-label-md bg-surface-variant/50 px-2 py-1 rounded text-primary">NA_WEST_04</span>
+</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<span class="text-body-md text-on-surface-variant">Inactive</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-body-md text-on-surface-variant">Nov 04, 2023</td>
+<td class="px-gutter py-4 text-right">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-high/30 transition-colors group">
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-tertiary-container to-tertiary overflow-hidden border border-outline-variant/30">
+<img alt="Member Avatar" class="w-full h-full object-cover" data-alt="A clean, minimalist 3D avatar of a man with a beard and a neutral expression, against a background of soft geometric shadows in shades of blue and slate. The lighting emphasizes professional clarity and precision, aligning with a high-end enterprise design system. The image is crisp and optimized for a modern web interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDREdJ4nEE8USphvJ0_Wx3gl2eblcdwlaLwEhLbsvzvi4NHYhFjeP7AGWvLon0Ivas9HZwK7jGy7TkDjdkFHhWyMV_PEyWiZPSVUeapgGG7n9xuKw5TKTQzTcFTwB9vlZnUCHJOF9nOTuB-JlZBZ5gwo3eDppqTZlZ3L8tnP49rfO0NOZUx3HDOXeMaqLdL0ev-ulFpGYpi16QZMdMCVK4IJ6nDwbtPaJd4vUjqUPMUd0EUu2wK_udoEScK0kNxQHv4VQzD6jJAjsU"/>
+</div>
+<div>
+<div class="text-body-md font-bold text-on-surface">James Miller</div>
+<div class="text-label-sm text-on-surface-variant">j.miller@kinetic.io</div>
+</div>
+</div>
+</td>
+<td class="px-gutter py-4">
+<span class="font-label-md text-label-md bg-surface-variant/50 px-2 py-1 rounded text-primary">APAC_SOUTH_02</span>
+</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_rgba(76,215,246,0.6)]"></div>
+<span class="text-body-md text-on-surface">Active</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-body-md text-on-surface-variant">Jan 18, 2024</td>
+<td class="px-gutter py-4 text-right">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-high/30 transition-colors group">
+<td class="px-gutter py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-tr from-secondary-container to-secondary overflow-hidden border border-outline-variant/30">
+<img alt="Member Avatar" class="w-full h-full object-cover" data-alt="A modern 3D avatar of a female professional with long wavy hair, illuminated by a warm spotlight against a deep charcoal background. The visual style is sophisticated and high-density, conveying authority and technical expertise. The color palette incorporates subtle indigo and slate tones consistent with a premium SaaS brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEFIXYPsQWx-bHk0yzJcYufPCUoiT1uJgFFsBYpX1E4SoUNH0iT0oz3gwS-9XvRp2SwgUDqgw1a3_wvc70tVxMIgMvfteAjXfhxkWQAxDYfyjfPswAkSUpttkAyM9kdPd9BWGOf8xFHcADImYRH_-Wh9jTXIduvcV7hUjHb_YvBTBq8NZ-isoXWyDw2v_HkURELR32X2kpQmQrV_UdJ0y8OPdU3SD3SmqvVWkxP1H1rWv_ST2xb8B64iiASIyO2qRlSoaHYDRE4SM"/>
+</div>
+<div>
+<div class="text-body-md font-bold text-on-surface">Elena Luz</div>
+<div class="text-label-sm text-on-surface-variant">elena.l@kinetic.io</div>
+</div>
+</div>
+</td>
+<td class="px-gutter py-4">
+<span class="font-label-md text-label-md bg-surface-variant/50 px-2 py-1 rounded text-primary">LATAM_EAST_01</span>
+</td>
+<td class="px-gutter py-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_rgba(76,215,246,0.6)]"></div>
+<span class="text-body-md text-on-surface">Active</span>
+</div>
+</td>
+<td class="px-gutter py-4 text-body-md text-on-surface-variant">Feb 02, 2024</td>
+<td class="px-gutter py-4 text-right">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-gutter py-4 bg-surface-container border-t border-outline-variant/10 flex items-center justify-between">
+<div class="text-label-sm text-on-surface-variant">Showing 4 of 12,482 members</div>
+<div class="flex gap-2">
+<button class="px-3 py-1 border border-outline-variant/30 rounded text-label-sm text-on-surface-variant hover:bg-surface-container-high transition-all">Previous</button>
+<button class="px-3 py-1 border border-outline-variant/30 rounded text-label-sm text-on-surface font-bold hover:bg-surface-container-high transition-all">Next</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
