@@ -13,7 +13,21 @@ pnpm dev
 # or
 bun dev
 ```
-
+```bash
+app/
+ ├── globals.css           (Tailwind directives and global variables)
+ ├── layout.tsx            (Root layout, fonts)
+ ├── page.tsx              (Dashboard - Main Page)
+ ├── signin/page.tsx       (Sign In Page)
+ ├── admin/page.tsx        (Admin Panel)
+ ├── members/page.tsx      (Member Management)
+components/
+ ├── Sidebar.tsx           (Global Sidebar Navigation)
+ ├── Header.tsx            (Top Navigation/Header)
+ ├── DashboardCards.tsx    (Stats/Analytics Cards)
+ ├── Table.tsx             (Reusable Data Table)
+ ├── UI/                   (Buttons, Inputs, Badges, etc.)
+```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
